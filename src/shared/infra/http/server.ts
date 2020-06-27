@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 
 import express, { Request, Response, NextFunction } from 'express';
+import cors from 'cors';
 import 'express-async-errors';
 
 import AppError from './error/AppError';
@@ -11,6 +12,7 @@ import './database';
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use('/files', express.static(uploadConfig.directory));
 app.use(routes);
@@ -32,6 +34,10 @@ app.use(
   },
 );
 
-app.listen(3333, () => {
+/*const server = */ app.listen(3333, () => {
   console.log('🚀 Server started on port 3333!');
 });
+
+// server.close(() => {
+//   process.exit(0);
+// });
