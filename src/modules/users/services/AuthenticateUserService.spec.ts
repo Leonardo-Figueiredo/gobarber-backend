@@ -53,14 +53,14 @@ describe('AuthenticateUser', () => {
       password: 'jhony123123',
     });
 
-    expect(
+    await expect(
       authenticateUserService.execute({
         email: 'jhonydoe@doe.com',
         password: 'jhony123123',
       }),
     ).rejects.toBeInstanceOf(AppError);
 
-    expect(
+    await expect(
       authenticateUserService.execute({
         email: 'jhondoe@doe.com',
         password: 'jhony123122',
